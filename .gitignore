@@ -1,52 +1,34 @@
-# Prerequisites
-*.d
+#include<stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+int pertenceFibonacci (int num) {
+    int a = 0, b = 1, temp;
 
-# Linker output
-*.ilk
-*.map
-*.exp
+    if (num == 0 || num == 1) {
+        return 1;
+    }
 
-# Precompiled Headers
-*.gch
-*.pch
+    while (b <= num) {
+        if (b == num) {
+            return 1;
+        }
+        temp = b;
+        b = a + b;
+        a = temp;
+    }
+    return 0;
+}
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+int main() {
+    int numero;
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+    printf ("Informe um número: ");
+    scanf ("%d", &numero);
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+    if (pertenceFibonacci (numero)) {
+        printf ("O número %d pertence à sequência de Fibonacci.\n", numero);
+    } else {
+        printf ("O número %d não pertence à sequência de Fibonacci.\n", numero);
+    }
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+    return 0;
+}
